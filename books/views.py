@@ -1,5 +1,5 @@
 from django.views import generic
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from .models import Book
 
@@ -22,5 +22,7 @@ class BookUpdateView(generic.UpdateView):
     fields = ['title', 'description', 'author', 'price',]
     template_name = 'books/book_update.html'
 
-    def get_success_url(self):
-        return reverse('book_detail', kwargs={'pk': self.object.pk})
+class BookDeleteView(generic.DeleteView):
+    model = Book
+    template_name = 'books/book_delete.html'
+    success_url = reverse_lazy('book_list')

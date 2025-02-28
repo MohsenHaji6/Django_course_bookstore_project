@@ -12,6 +12,7 @@
     <P>{{ book.author }}</P>
     <p>{{ book.price }}</p>
     <a href="{% url "book_list" %}">لیست همه کتاب ها</a>
+    <a href="{% url "book_update" book.pk %}">ویرایش کتاب</a>
         
 {% endblock content %}
     

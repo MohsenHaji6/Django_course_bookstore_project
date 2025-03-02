@@ -1,15 +1,16 @@
 {% extends '_base.html' %}
-    
+
+{% load book_tags %}
+
 {% block page_title %}
     جزئیات کتاب {{ book.title }}
 {% endblock page_title %}
 
-
 {% block content %}
 
-    <h2>{{ book.title }}</h2>
-    <p>{{ book.description }}</p>
-    <P>{{ book.author }}</P>
+    <h2>{{ book.title|capfirst }}</h2>
+    <p>{{ book.description|linebreaks }}</p>
+    <P>{{ book.author|upper }}</P>
     <p>{{ book.price }}</p>
     <a href="{% url "book_list" %}"><button type="button" class="btn btn-info">لیست کتاب ها</button></a>
     <a href="{% url "book_update" book.id %}"><button class="btn btn-warning" type="button">ویرایش</button></a>
